@@ -10,13 +10,12 @@ import (
 	"github.com/projectdiscovery/httpx/runner"
 )
 
-func RunHttpx() {
+func RunHttpx(domains []string) {
 	gologger.DefaultLogger.SetMaxLevel(levels.LevelVerbose) // increase the verbosity (optional)
 
 	options := runner.Options{
 		Methods:         "GET",
-		InputTargetHost: goflags.StringSlice{"scanme.sh", "projectdiscovery.io", "localhost"},
-		//InputFile: "./targetDomains.txt", // path to file containing the target domains list
+		InputTargetHost: goflags.StringSlice(domains),
 		OnResult: func(r runner.Result) {
 			// handle error
 			if r.Err != nil {

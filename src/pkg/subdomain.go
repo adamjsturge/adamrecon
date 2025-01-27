@@ -3,22 +3,21 @@ package main
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"io"
 	"log"
+	"strings"
 
 	"github.com/projectdiscovery/subfinder/v2/pkg/runner"
 )
 
-func RunSubdomain() {
+func RunSubdomain(domains []string) []string {
+	var results []string
 	subfinderOpts := &runner.Options{
 		Threads:            10, // Thread controls the number of threads to use for active enumerations
 		Timeout:            30, // Timeout is the seconds to wait for sources to respond
 		MaxEnumerationTime: 10, // MaxEnumerationTime is the maximum amount of time in mins to wait for enumeration
-		// ResultCallback: func(s *resolve.HostEntry) {
-		// callback function executed after each unique subdomain is found
-		// },
-		// ProviderConfig: "your_provider_config.yaml",
-		// and other config related options
+		Silent:             false,
 	}
 
 	// disable timestamps in logs / configure logger
@@ -30,21 +29,20 @@ func RunSubdomain() {
 	}
 
 	output := &bytes.Buffer{}
-	// To run subdomain enumeration on a single domain
-	if err = subfinder.EnumerateSingleDomainWithCtx(context.Background(), "hackerone.com", []io.Writer{output}); err != nil {
-		log.Fatalf("failed to enumerate single domain: %v", err)
+	for _, domain := range domains {
+		fmt.Printf("Enumerating subdomains for: %s\n", domain)
+		if err = subfinder.EnumerateSingleDomainWithCtx(context.Background(), domain, []io.Writer{output}); err != nil {
+			log.Printf("failed to enumerate domain %s: %v", domain, err)
+			continue
+		}
 	}
 
-	// To run subdomain enumeration on a list of domains from file/reader
-	// file, err := os.Open("domains.txt")
-	// if err != nil {
-	// 	log.Fatalf("failed to open domains file: %v", err)
-	// }
-	// defer file.Close()
-	// if err = subfinder.EnumerateMultipleDomainsWithCtx(context.Background(), file, []io.Writer{output}); err != nil {
-	// 	log.Fatalf("failed to enumerate subdomains from file: %v", err)
-	// }
+	// Add found subdomains to results
+	for _, subdomain := range strings.Split(output.String(), "\n") {
+		if sub := strings.TrimSpace(subdomain); sub != "" {
+			results = append(results, sub)
+		}
+	}
 
-	// print the output
-	log.Println(output.String())
+	return results
 }

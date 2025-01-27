@@ -2,7 +2,10 @@ module AdamRecon
 
 go 1.22.0
 
-require github.com/projectdiscovery/subfinder/v2 v2.6.6
+require (
+	github.com/projectdiscovery/nuclei/v3 v3.2.8
+	github.com/projectdiscovery/subfinder/v2 v2.6.6
+)
 
 require (
 	code.gitea.io/sdk/gitea v0.18.0 // indirect
@@ -55,7 +58,6 @@ require (
 	github.com/caddyserver/zerossl v0.1.3 // indirect
 	github.com/cespare/xxhash v1.1.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/chenzhuoyu/base64x v0.0.0-20230717121745-296ad89f973d // indirect
 	github.com/clbanning/mxj/v2 v2.7.0 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
 	github.com/cloudwego/iasm v0.2.0 // indirect
@@ -131,7 +133,6 @@ require (
 	github.com/lukasbob/srcset v0.0.0-20190730101422-86b742e617f3 // indirect
 	github.com/mackerelio/go-osstat v0.2.4 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
-	github.com/mholt/acmez v1.2.0 // indirect
 	github.com/mholt/acmez/v2 v2.0.1 // indirect
 	github.com/mholt/archiver v3.1.1+incompatible // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
@@ -148,7 +149,6 @@ require (
 	github.com/projectdiscovery/interactsh v1.1.9 // indirect
 	github.com/projectdiscovery/ldapserver v1.0.2-0.20240219154113-dcc758ebc0cb // indirect
 	github.com/projectdiscovery/n3iwf v0.0.0-20230523120440-b8cd232ff1f5 // indirect
-	github.com/projectdiscovery/nuclei/v3 v3.2.8 // indirect
 	github.com/projectdiscovery/rdap v0.9.1-0.20221108103045-9865884d1917 // indirect
 	github.com/projectdiscovery/sarif v0.0.1 // indirect
 	github.com/projectdiscovery/uncover v1.0.8 // indirect
@@ -211,11 +211,9 @@ require (
 	github.com/domainr/whois v0.1.0 // indirect
 	github.com/dsnet/compress v0.0.2-0.20210315054119-f66993602bf5 // indirect
 	github.com/fatih/color v1.17.0 // indirect
-	github.com/gaukas/godicttls v0.0.4 // indirect
 	github.com/go-faker/faker/v4 v4.1.1 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/go-rod/rod v0.116.0 // indirect
-	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/certificate-transparency-go v1.2.1 // indirect
 	github.com/google/go-github/v30 v30.1.0 // indirect
@@ -223,7 +221,7 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/css v1.0.1 // indirect
 	github.com/haccer/available v0.0.0-20240515180643-5940a1670ee3 // indirect
-	github.com/haccer/subjack v0.0.0-20201112041112-49c51e57deab // indirect
+	github.com/haccer/subjack v0.0.0-20201112041112-49c51e57deab
 	github.com/hako/durafmt v0.0.0-20210316092057-3a2c319c1acd // indirect
 	github.com/hashicorp/go-version v1.7.0 // indirect
 	github.com/hbakhtiyor/strsim v0.0.0-20190107154042-4d2bbb273edf // indirect
@@ -268,11 +266,11 @@ require (
 	github.com/projectdiscovery/fdmax v0.0.4 // indirect
 	github.com/projectdiscovery/freeport v0.0.5 // indirect
 	github.com/projectdiscovery/goconfig v0.0.1 // indirect
-	github.com/projectdiscovery/goflags v0.1.54 // indirect
-	github.com/projectdiscovery/gologger v1.1.12 // indirect
+	github.com/projectdiscovery/goflags v0.1.54
+	github.com/projectdiscovery/gologger v1.1.12
 	github.com/projectdiscovery/gostruct v0.0.2 // indirect
 	github.com/projectdiscovery/hmap v0.0.44 // indirect
-	github.com/projectdiscovery/httpx v1.6.3 // indirect
+	github.com/projectdiscovery/httpx v1.6.3
 	github.com/projectdiscovery/katana v1.1.0
 	github.com/projectdiscovery/machineid v0.0.0-20240226150047-2e2c51e35983 // indirect
 	github.com/projectdiscovery/mapcidr v1.1.34 // indirect
@@ -285,7 +283,6 @@ require (
 	github.com/projectdiscovery/useragent v0.0.53 // indirect
 	github.com/projectdiscovery/utils v0.1.0 // indirect
 	github.com/projectdiscovery/wappalyzergo v0.1.2 // indirect
-	github.com/quic-go/quic-go v0.42.0 // indirect
 	github.com/refraction-networking/utls v1.6.6 // indirect
 	github.com/remeh/sizedwaitgroup v1.0.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
@@ -339,7 +336,6 @@ require (
 	golang.org/x/text v0.15.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	golang.org/x/tools v0.21.0 // indirect
-	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/protobuf v1.34.1 // indirect
 	gopkg.in/djherbis/times.v1 v1.3.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect

@@ -1,40 +1,38 @@
 package main
 
-import (
-	"sync"
+// import (
+// 	"time"
 
-	nuclei "github.com/projectdiscovery/nuclei/v3/lib"
-)
+// 	nuclei "github.com/projectdiscovery/nuclei/v3/lib"
+// )
 
-func RunNuclei() {
-	ne, err := nuclei.NewThreadSafeNucleiEngine()
-	if err != nil {
-		panic(err)
-	}
-	// setup waitgroup to handle concurrency
-	wg := &sync.WaitGroup{}
+// func initializeNucleiEngine() (*nuclei.NucleiEngine, error) {
+// 	return nuclei.NewNucleiEngine(
+// 		nuclei.WithTemplateFilters(nuclei.TemplateFilters{ProtocolTypes: "http,dns"}),
+// 		nuclei.WithGlobalRateLimit(1, time.Second),
+// 		nuclei.WithConcurrency(nuclei.Concurrency{
+// 			TemplateConcurrency:           1,
+// 			HostConcurrency:               1,
+// 			HeadlessHostConcurrency:       1,
+// 			HeadlessTemplateConcurrency:   1,
+// 			JavascriptTemplateConcurrency: 1,
+// 			TemplatePayloadConcurrency:    1,
+// 			ProbeConcurrency:              1,
+// 		}),
+// 	)
+// }
 
-	// scan 1 = run dns templates on scanme.sh
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		err = ne.ExecuteNucleiWithOpts([]string{"scanme.sh"}, nuclei.WithTemplateFilters(nuclei.TemplateFilters{ProtocolTypes: "http"}))
-		if err != nil {
-			panic(err)
-		}
-	}()
+// func RunNuclei(domains []string) {
+// 	ne, err := initializeNucleiEngine()
+// 	if err != nil {
+// 		panic(err)
+// 	}
+// 	defer ne.Close()
 
-	// scan 2 = run http templates on honey.scanme.sh
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		err = ne.ExecuteNucleiWithOpts([]string{"honey.scanme.sh"}, nuclei.WithTemplateFilters(nuclei.TemplateFilters{ProtocolTypes: "dns"}))
-		if err != nil {
-			panic(err)
-		}
-	}()
+// 	ne.LoadTargets(domains, false)
 
-	// wait for all scans to finish
-	wg.Wait()
-	defer ne.Close()
-}
+// 	err = ne.ExecuteWithCallback(nil)
+// 	if err != nil {
+// 		panic(err)
+// 	}
+// }

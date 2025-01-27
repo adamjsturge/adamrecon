@@ -2,6 +2,7 @@ package main
 
 import (
 	"math"
+	"strings"
 
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/katana/pkg/engine/standard"
@@ -9,7 +10,7 @@ import (
 	"github.com/projectdiscovery/katana/pkg/types"
 )
 
-func RunKatana() {
+func RunKatana(domains []string) {
 	options := &types.Options{
 		MaxDepth:     3,             // Maximum depth to crawl
 		FieldScope:   "rdn",         // Crawling Scope Field
@@ -34,9 +35,15 @@ func RunKatana() {
 		gologger.Fatal().Msg(err.Error())
 	}
 	defer crawler.Close()
-	var input = "https://www.hackerone.com"
-	err = crawler.Crawl(input)
-	if err != nil {
-		gologger.Warning().Msgf("Could not crawl %s: %s", input, err.Error())
+	for _, input := range domains {
+		// Ensure URL has a scheme
+		if !strings.HasPrefix(input, "http://") && !strings.HasPrefix(input, "https://") {
+			input = "https://" + input
+		}
+
+		err = crawler.Crawl(input)
+		if err != nil {
+			gologger.Warning().Msgf("Could not crawl %s: %s", input, err.Error())
+		}
 	}
 }
