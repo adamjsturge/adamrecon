@@ -1,16 +1,19 @@
+# Adam Recon early development
+This is in super early development only basic recon stuff. Feel free to commit a PR or report an issue if you find something
 
 
-## Added
-github.com/projectdiscovery/httpx/runner
-github.com/haccer/subjack
+<a href="https://ko-fi.com/adamjsturge">☕ Buy me a coffee</a>
 
-###
-github.com/projectdiscovery/katana/internal/runner
-github.com/projectdiscovery/nuclei/v3/internal/runner
+## To Do
+- [ ] Database with SQLite (probably Postgres in future)
+- [ ] Fix Nuclei
+- [ ] Make Clear CLi version and package
+- [ ] Make Docker Image that runs the cli on a cron
 
-## To Add
-github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
-github.com/projectdiscovery/katana/cmd/katana@latest
-https://github.com/Findomain/Findomain
+## How to Run
+```bash
+git clone git@github.com:adamjsturge/adamrecon.git
+cd adamrecon/src/pkg
+go run ./
+```
 
-https://github.com/sa7mon/S3Scanner
