@@ -14,6 +14,6 @@ This is in super early development only basic recon stuff. Feel free to commit a
 ```bash
 git clone git@github.com:adamjsturge/adamrecon.git
 cd adamrecon/src/pkg
-go run ./
+go run ./ -domains="example.com"
 ```
 
